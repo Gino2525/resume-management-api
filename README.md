@@ -3,7 +3,55 @@
 A Resume Management System built using **FastAPI** that allows HR users to upload, manage, search, and delete candidate resumes through REST APIs and a simple web interface.
 
 ---
+simple setup to run__
 
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+http://127.0.0.1:8000/frontend/
+
+Database & Data Persistence
+
+This application includes full data persistence for all submitted candidate information.
+
+Backend Stack
+
+Framework: FastAPI
+
+ORM: SQLAlchemy
+
+Database: SQLite
+
+How Data Is Stored__
+
+When a candidate form is submitted:
+
+Resume file
+
+Uploaded files are stored on the server at:
+
+app/uploads/
+
+Candidate details
+
+All form fields (name, contact info, education, experience, skills, etc.)
+
+Persisted in a relational database using SQLAlchemy ORM
+
+Stored inside a local SQLite database file
+
+Database Creation__
+
+The database is automatically created on first application startup.
+
+Base.metadata.create_all(bind=engine)
+
+If the database file does not exist, it is generated automatically
+
+Required tables are created programmatically
+
+Generated database file:
+
+resume.db
 ## Features
 
 * Upload candidate details with resume (PDF/DOC/DOCX)
