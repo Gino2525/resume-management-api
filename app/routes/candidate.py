@@ -136,3 +136,15 @@ def search_candidates(
     return query.all()
 
 
+from fastapi.responses import FileResponse
+
+@router.get("/candidates/{candidate_id}/resume")
+def view_resume(candidate_id: int, db: Session = Depends(get_db)):
+    candidate = db.query(models.Candidate)\
+                  .filter(models.Candidate.id == candidate_id)\
+                  .first()
+
+    if not candidate:
+        return {"error": "Candidate not found"}
+
+    return FileResponse(candidate.resume_path, media_type="application/pdf")

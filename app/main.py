@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
+from fastapi.staticfiles import StaticFiles
 from .database import Base, engine
 from .routes import candidate
 
@@ -19,4 +19,7 @@ Base.metadata.create_all(bind=engine)
 
 app.include_router(candidate.router)
 
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount("/frontend", StaticFiles(directory="frontend", html=True), name="frontend")
+
+
+app.mount("/uploads", StaticFiles(directory="app/uploads"), name="uploads")
