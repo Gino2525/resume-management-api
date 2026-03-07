@@ -6,7 +6,9 @@ A Resume Management System built using **FastAPI** that allows HR users to uploa
 simple setup to run__
 
 pip install -r requirements.txt
+
 uvicorn app.main:app --reload
+
 http://127.0.0.1:8000/frontend/
 
 Database & Data Persistence
